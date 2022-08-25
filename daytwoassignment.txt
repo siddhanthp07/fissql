@@ -66,4 +66,19 @@ select * from Emp where Sal = (select min(Sal) from Emp)
 
 select * from Dept where Deptno not in (Select Deptno from Emp group by (Deptno))
 
-select Ename,Sal from Emp where Sal > 1200 and Deptno = 20
+select Ename,Sal from Emp where Sal > 1200 and Deptno = 20 order by Ename
+
+--10
+select concat(Dept.Deptno,',', Dept.Name),sum(Emp.Sal) from Dept JOIN Emp on Dept.Deptno = Emp.Deptno group by (Dept.Deptno),Dept.Name
+select Dept.Deptno, Dept.Name,sum(Emp.Sal) as 'Total Dept Sal' from Dept JOIN Emp on Dept.Deptno = Emp.Deptno group by (Dept.Deptno),Dept.Name
+select Dept.Deptno,Dept.Name,sum(Emp.Sal) from Dept,Emp where Dept.Deptno = Emp.Deptno group by Dept.Deptno,Dept.Name
+
+select Ename,Sal from Emp where Ename = 'Miller' or Ename = 'Smith'
+
+select Ename from Emp where Ename like '[AM]%'
+
+select Sal * 12 from Emp where Ename = 'Smith'
+
+select Ename,Sal from Emp where Sal not between 1500 and 2850
+
+select Ename from Emp where Empno in (select Mgrid from Emp group by (Mgrid) having count(Mgrid)>2)  
