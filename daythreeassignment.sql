@@ -46,14 +46,14 @@ select Ename,Sal,Comm from Emp where Comm > Sal + Sal*0.1
 select Ename from Emp where Ename like '%ll%' and (Deptno=30 or Mgrid=7782)
 
 --16
-select Ename,DATEDIFF(day,Hiredate,SYSDATETIME())/365,count(Ename) from Emp group by Ename,Hiredate
+select Ename,DATEDIFF(year,Hiredate,SYSDATETIME()) as 'Years of Experience',count(Ename) from Emp where DATEDIFF(year,Hiredate,SYSDATETIME()) between 10 and 20 group by Ename,Hiredate
 
 --17
 
 select Emp.Ename,Dept.Name from Emp join Dept on Emp.Deptno= Dept.Deptno order by Emp.Ename , Dept.Name desc
 
 --18
-select Ename,FLOOR(DATEDIFF(day,Hiredate,SYSDATETIME())/365) as 'Experience' from emp where Ename='Miller'
+select Ename,FLOOR(DATEDIFF(day,Hiredate,SYSDATETIME())) as 'Experience' from emp where Ename='Miller'
 
 
 
