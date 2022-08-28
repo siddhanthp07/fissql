@@ -53,7 +53,7 @@ select Ename,DATEDIFF(year,Hiredate,SYSDATETIME()) as 'Years of Experience',coun
 select Emp.Ename,Dept.Name from Emp join Dept on Emp.Deptno= Dept.Deptno order by Emp.Ename , Dept.Name desc
 
 --18
-select Ename,FLOOR(DATEDIFF(day,Hiredate,SYSDATETIME())) as 'Experience' from emp where Ename='Miller'
+select Ename,FLOOR(DATEDIFF(year,Hiredate,SYSDATETIME())) as 'Years of Experience' from emp where Ename='Miller'
 
 
 
